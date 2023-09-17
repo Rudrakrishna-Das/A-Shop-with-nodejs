@@ -1,0 +1,59 @@
+.main-body {
+  margin: 4%;
+}
+
+.product-form {
+  width: 20rem;
+  max-width: 90%;
+  margin: 2% auto;
+}
+.form-control label {
+  display: block;
+  text-align: left;
+  margin: 1% 0;
+  font-weight: 600;
+}
+
+.form-control input,
+.form-control textarea {
+  margin-bottom: 3%;
+  width: 100%;
+  font-weight: 600;
+}
+
+.form-control input,
+.form-control textarea {
+  padding-left: 4px;
+  border: none;
+  background-color: aquamarine;
+  height: 1.5rem;
+  transition: all 0.5s;
+}
+
+.form-control textarea {
+  height: 4rem;
+}
+.form-control input.invalid,
+.form-control textarea.invalid {
+  border: 2px solid red;
+}
+.form-control input:hover,
+.form-control textarea:hover {
+  background-color: rgb(4, 245, 165);
+}
+.product-form button {
+  cursor: pointer;
+  margin-top: 3%;
+  width: 40%;
+  height: 2rem;
+  background-color: white;
+  border: 2px solid rgb(5, 3, 143);
+  border-radius: 5px;
+  color: rgb(5, 3, 143);
+  font-weight: 600;
+  transition: all 0.5s;
+}
+.product-form button:hover {
+  background-color: rgb(5, 3, 143);
+  color: white;
+}

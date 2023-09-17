@@ -1,0 +1,45 @@
+
+<%- include('../includes/start.ejs') %>  
+    <link rel="stylesheet" href="/css/product.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
+  </head>
+  <body>
+  <%- include('../includes/navigation.ejs') %>
+    <main class="main-body">
+      <h1 class="h1">My Products</h1>
+      <% if(prods.length > 0) { %>
+      <p>List of all products...</p>
+      <div class="grid">
+        <% for (const product of prods) { %>
+        <div class="card product-item">
+          <div class="card__header">
+            <h1 class="product__title"><%= product.title %></h1>
+          </div>
+          <div class="card__image">
+            <img
+              src= '/<%= product.imageURL %>'
+              alt="A Book"
+            />
+          </div>
+          <div class="card__content">
+            <h2 class="product__price">$<%=product.price%></h2>
+            <p class="product__description">
+              <%=product.description.length > 30 ? product.description.slice(0, 30) + " ..." : product.description %>
+            </p>
+          </div>
+          <div class="card__actions__admin">
+            <a href="/admin/edit-product/<%=product._id%>" class="btn">Edit</a>
+            <form action="/admin/delete-product" method='POST' class="form__btn">
+              <input type="hidden" value="<%=product._id %>" name="productId" />
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <button type="submit">Delete</button>
+          </form>
+          </div>
+        </div>
+        <% } %>
+      </div>
+      <% } else { %>
+      <h1>No Products Available</h1>
+      <% } %>
+    </main>
+  <%- include('../includes/end.ejs') %>

@@ -1,0 +1,62 @@
+<%- include('../includes/start.ejs') %>
+    <link rel="stylesheet" href="/css/product.css" />
+  </head>
+  <body>
+<%- include('../includes/navigation.ejs') %>
+<% if(errorMessage){ %>
+  <div class="user-message user-message--error">
+    <%= errorMessage %>
+  </div>
+      <% } %>
+    <main>
+      <form action="<%= editing ? '/admin/edit-product' : '/admin/add-product' %>" method="POST" class="product-form" enctype="multipart/form-data">
+        <div class="form-control">
+          <label for="title">Title</label>
+          <input
+          class="<%= validationError.find(e=> e.path === 'title') ? 'invalid' : '' %>" 
+          type="text" 
+          name="title" 
+          id="title" 
+          value="<%= editing || validating ? prod.title : '' %>"/>
+        </div>
+        <div class="form-control">
+          <label for="image">Image</label>
+          <input
+          type="file" 
+          name="image" 
+          id="image" 
+        </div>
+        <!-- <div class="form-control">
+          <label for="imageurl">Image URL</label>
+          <input
+           class="<%= validationError.find(e=> e.path === 'imageURL') ? 'invalid' : '' %>"
+          type="text" 
+          name="imageURL" 
+          id="imageurl" 
+          value="<%= editing|| validating ? prod.imageURL : '' %>"/>
+        </div> -->
+        <div class="form-control">
+          <label for="price">Price</label>
+          <input
+           class="<%= validationError.find(e=> e.path === 'price') ? 'invalid' : '' %>"
+          type="number" 
+          name="price" 
+          step="0.01" 
+          id="price" 
+          value="<%= editing|| validating ? prod.price : '' %>"/>
+        </div>
+        <div class="form-control">
+          <label for="description">Description</label>
+          <textarea
+          class="<%= validationError.find(e=> e.path === 'description') ? 'invalid' : '' %>" 
+          name="description" 
+          id="description"> <%= editing|| validating ? prod.description : '' %></textarea>
+        </div>
+        <% if (editing) { %>
+          <input type="hidden" value="<%=prod._id%>"  name="productId" >
+        <% } %>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <button type="submit"><%= editing ? 'Update Product' : 'Add Product' %></button>
+      </form>
+    </main>
+<%- include('../includes/end.ejs') %>

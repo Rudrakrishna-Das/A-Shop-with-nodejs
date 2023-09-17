@@ -1,0 +1,40 @@
+.card__actions__admin {
+  margin-top: 10%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 1%;
+  width: 20%;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: white;
+  border: 2px solid rgba(36, 36, 255, 0.8);
+  transition: all 0.5s;
+}
+
+.form__btn button {
+  cursor: pointer;
+  padding: 1%;
+  width: 6rem;
+  height: 1.5rem;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: white;
+  border: 2px solid rgba(36, 36, 255, 0.8);
+  transition: all 0.5s;
+}
+
+.btn:hover,
+.form__btn button:hover {
+  background-color: rgba(36, 36, 255, 0.8);
+  color: white;
+}
+
+@media (max-width: 313px) {
+  .btn {
+    font-size: 12px;
+  }
+}

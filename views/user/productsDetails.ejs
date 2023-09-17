@@ -1,0 +1,18 @@
+<%- include('../includes/start.ejs') %>
+<link rel="stylesheet" href="/css/productDetails.css" />
+</head>
+<body>
+  <%- include('../includes/navigation.ejs') %>
+  <section class="product" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('/<%=prod.imageURL%>'); background-repeat: no-repeat; background-size: cover; background-position: center;" >
+    <div class="product_details">
+        <img class="product__image" src ='/<%=prod.imageURL%>' alt='<%=prod.title%>' />
+        <h1 class="product__title"><%=prod.title.toUpperCase()%></h1>
+        <h5 class="product__price">$<%=prod.price%></h5>
+        <h4 class="product__description"><%=prod.description%></h4>
+        <% if(isAuthenticated){ %>
+        <%-include('../includes/addToCart.ejs') %>
+        <% } %>
+        </div>
+      </section>
+
+<%- include('../includes/end.ejs') %>
