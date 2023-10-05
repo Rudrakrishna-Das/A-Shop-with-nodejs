@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "My First NodeApp",
   "main": "first-app.js",
+  "engines": {
+    "node": "19.7.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "MONGO_USER=rudradas16996 MONGO_PASSWORD=rudra16996 MONGO_DEFAULT_DATABASE=mongoose-shop STRIPE_KEY=sk_test_51NrbpVSFh46LMoF6wKQaXLLyHquLMjfmw007gXxuJRTKu5ygNUu7K7dkucOSTnwiJUYXbZ826mJvBYNOfSbo2MqK00nJzQZUT9 node first-app.js",
