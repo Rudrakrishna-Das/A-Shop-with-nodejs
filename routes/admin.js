@@ -43,6 +43,11 @@ router.post(
   productsContoller.postEditProductPage
 );
 
-router.post("/delete-product", isAuth, productsContoller.deleteProduct);
+// router.post("/delete-product", isAuth, productsContoller.deleteProduct); // controling from backend
+router.delete(
+  "/delete-product/:productId",
+  isAuth,
+  productsContoller.deleteProduct
+); // controling from frontend
 
 module.exports = router;

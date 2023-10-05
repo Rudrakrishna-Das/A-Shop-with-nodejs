@@ -7,6 +7,8 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 const csrf = require("csurf");
 const flash = require("connect-flash");
 const multer = require("multer");
+const helmet = require("helmet");
+const compression = require("compression");
 
 const mongoose = require("mongoose");
 
@@ -22,13 +24,12 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-const MONGODB_URI =
-  "mongodb+srv://rudradas16996:0qGGmAGjUANLGtkC@cluster0.q1ixgxx.mongodb.net/mongoose-shop?retryWrites=true&w=majority";
+const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.q1ixgxx.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority`;
+
 const store = new MongoDBStore({
   uri: MONGODB_URI,
   collection: "sessions",
 });
-
 const csrfProtection = csrf();
 
 const fileStorage = multer.diskStorage({
@@ -51,6 +52,8 @@ const fileFilter = (req, file, cb) => {
     cb(null, false);
   }
 };
+app.use(helmet());
+app.use(compression());
 
 app.use(bodyParse.urlencoded({ extended: false }));
 app.use(

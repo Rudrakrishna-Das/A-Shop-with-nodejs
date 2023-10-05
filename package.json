@@ -5,7 +5,8 @@
   "main": "first-app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon first-app.js"
+    "start": "MONGO_USER=rudradas16996 MONGO_PASSWORD=rudra16996 MONGO_DEFAULT_DATABASE=mongoose-shop STRIPE_KEY=sk_test_51NrbpVSFh46LMoF6wKQaXLLyHquLMjfmw007gXxuJRTKu5ygNUu7K7dkucOSTnwiJUYXbZ826mJvBYNOfSbo2MqK00nJzQZUT9 node first-app.js",
+    "start:dev": "nodemon first-app.js"
   },
   "author": "Rudra",
   "license": "ISC",
@@ -15,6 +16,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parse": "^0.1.0",
+    "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "connect-mongodb-session": "^3.1.1",
     "csurf": "^1.11.0",
@@ -23,6 +25,7 @@
     "express-handlebars": "^7.0.7",
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
+    "helmet": "^7.0.0",
     "mailtrap": "^3.2.0",
     "mongodb": "^5.7.0",
     "mongoose": "^7.4.5",
@@ -31,6 +34,7 @@
     "nodemailer": "^6.9.5",
     "pdfkit": "^0.13.0",
     "pug": "^3.0.2",
-    "sequelize": "^6.32.1"
+    "sequelize": "^6.32.1",
+    "stripe": "^13.6.0"
   }
 }

@@ -1,13 +1,15 @@
 <%- include('../includes/start.ejs') %>
+<link rel="stylesheet" href="/css/cart.css">
 </head>
 <body>
   <%- include('../includes/navigation.ejs') %>
   <main>
 <% if( productData.length > 0) { %>
-  <ul>
+  <ul class="cart__products">
     <% productData.forEach(product =>{ %>
       <li>
-        <p><%=product.productId.title%> (Quantity:-<%=product.quantity%>)</p>
+        <p><%=product.productId.title%></p>
+        <p>Quantity:-<%=product.quantity%></p>
         <form action="/cart-delete-item" method="POST">
 <input type="hidden" value="<%=product.productId._id%>" name="productId"/>
 <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
@@ -19,10 +21,12 @@
   </ul>
   <br/>
   <hr/>
-  <form action="/order-item" method="POST">
+  <!-- <form class="order" action="/order-item" method="POST">
     <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
     <button class="btn" type="submit">Order</button>
-            </form>
+            </form> -->
+            <br/>
+            <a class="btn" href="/checkout"> Order now</a>
 <%} else { %>
   <h1>No Cart Products Found</h1>
   <% } %>
